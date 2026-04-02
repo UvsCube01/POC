@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:MauiLoginApp.ViewModels"
+             x:Class="MauiLoginApp.Views.HomeView"
+             Title="Home"
+             Shell.NavBarIsVisible="False">
+
+    <Grid BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#121212}">
+        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="25" Padding="30">
+            
+            <Image Source="dotnet_bot.png" 
+                   HeightRequest="200" 
+                   HorizontalOptions="Center" />
+
+            <Label x:Name="WelcomeLabel"
+                   Text="{Binding Username, StringFormat='Welcome, {0}!'}" 
+                   FontSize="28" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   TextColor="{AppThemeBinding Light=Black, Dark=White}" />
+
+            <Label Text="You have successfully logged in." 
+                   FontSize="16" 
+                   HorizontalOptions="Center" 
+                   TextColor="Gray" />
+
+            <Button x:Name="LogoutButton"
+                    Text="Logout" 
+                    Command="{Binding LogoutCommand}" 
+                    BackgroundColor="Red" 
+                    TextColor="White" 
+                    FontAttributes="Bold"
+                    CornerRadius="25" 
+                    HeightRequest="50"
+                    WidthRequest="200"
+                    Margin="0,20,0,0" />
+                    <!-- To use Code-Behind, uncomment below and comment Command above -->
+                    <!-- Clicked="OnLogoutClicked" -->
+
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

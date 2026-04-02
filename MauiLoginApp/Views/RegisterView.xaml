@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:MauiLoginApp.ViewModels"
+             x:Class="MauiLoginApp.Views.RegisterView"
+             Title="Register"
+             Shell.NavBarIsVisible="True">
+
+    <Grid>
+        <!-- Similar Background Gradient
+        <BoxView IsVisible="{AppThemeBinding Light=True, Dark=False}">
+            <BoxView.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#6200EE" Offset="0.1" />
+                    <GradientStop Color="#BB86FC" Offset="1.0" />
+                </LinearGradientBrush>
+            </BoxView.Background>
+        </BoxView>
+
+        <BoxView IsVisible="{AppThemeBinding Light=False, Dark=True}">
+            <BoxView.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#121212" Offset="0.1" />
+                    <GradientStop Color="#03DAC6" Offset="1.0" />
+                </LinearGradientBrush>
+            </BoxView.Background> 
+        </BoxView>-->
+
+        <ScrollView>
+            <VerticalStackLayout Spacing="20" Padding="30">
+                <Label Text="Create Account" 
+                       FontSize="32" 
+                       FontAttributes="Bold" 
+                       TextColor="White" 
+                       HorizontalOptions="Start" />
+
+                <Label Text="Join us today!" 
+                       FontSize="16" 
+                       TextColor="White" 
+                       Opacity="0.8"
+                       HorizontalOptions="Start" 
+                       Margin="0,0,0,30" />
+
+                <Frame CornerRadius="20" 
+                       Padding="20" 
+                       BackgroundColor="{AppThemeBinding Light=#AAFFFFFF, Dark=#22FFFFFF}"
+                       BorderColor="Transparent" 
+                       HasShadow="True">
+                    
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="Email Address" TextColor="Gray" FontSize="12"/>
+                        <Entry x:Name="EmailEntry"
+                               Placeholder="Enter Email" 
+                               Text="{Binding Email}" 
+                               PlaceholderColor="Silver" 
+                               TextColor="{AppThemeBinding Light=Black, Dark=White}" 
+                               BackgroundColor="Transparent"/>
+
+                        <Label Text="Username" TextColor="Gray" FontSize="12"/>
+                        <Entry x:Name="UsernameEntry"
+                               Placeholder="Choose Username" 
+                               Text="{Binding Username}" 
+                               PlaceholderColor="Silver"
+                               TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                               BackgroundColor="Transparent" />
+
+                        <Label Text="Password" TextColor="Gray" FontSize="12"/>
+                        <Entry x:Name="PasswordEntry"
+                               Placeholder="Choose Password" 
+                               Text="{Binding Password}" 
+                               IsPassword="True" 
+                               PlaceholderColor="Silver"
+                               TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                               BackgroundColor="Transparent" />
+
+                        <Button x:Name="RegisterButton"
+                                Text="REGISTER" 
+                                Command="{Binding RegisterCommand}" 
+                                BackgroundColor="#6200EE" 
+                                TextColor="White" 
+                                FontAttributes="Bold"
+                                CornerRadius="25" 
+                                HeightRequest="50"
+                                Margin="0,10,0,0" />
+                                <!-- To use Code-Behind, uncomment below and comment Command above -->
+                                <!-- Clicked="OnRegisterClicked" -->
+
+                        <ActivityIndicator x:Name="RegisterLoadingIndicator"
+                                           IsRunning="{Binding IsBusy}" 
+                                           HorizontalOptions="Center" 
+                                           Color="White" />
+                    </VerticalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

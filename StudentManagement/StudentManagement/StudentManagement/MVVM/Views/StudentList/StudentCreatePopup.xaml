@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               xmlns:vm="clr-namespace:StudentManagement.MVVM.ViewModels.StudentList"
+               x:Class="StudentManagement.MVVM.Views.StudentList.StudentCreatePopup"
+               x:DataType="vm:StudentCreateViewModel">
+
+    <VerticalStackLayout Spacing="15" Padding="20" WidthRequest="320">
+
+        <!-- Title changes between "Add New Student" and "Edit Student" -->
+        <Label Text="{Binding Title}"
+               FontSize="Title"
+               HorizontalOptions="Center"
+               FontAttributes="Bold"
+               TextColor="#512BD4" />
+
+        <Entry Placeholder="Name"
+               Text="{Binding Name}" />
+
+        <Entry Placeholder="Email"
+               Keyboard="Email"
+               Text="{Binding Email}" />
+
+        <Entry Placeholder="Department"
+               Text="{Binding Department}" />
+
+        <HorizontalStackLayout Spacing="10" HorizontalOptions="End">
+            <Button Text="Cancel"
+                    Command="{Binding CancelCommand}"
+                    BackgroundColor="Gray"
+                    TextColor="White" />
+            <Button Text="Save"
+                    Command="{Binding SaveCommand}"
+                    BackgroundColor="#512BD4"
+                    TextColor="White" />
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+</toolkit:Popup>

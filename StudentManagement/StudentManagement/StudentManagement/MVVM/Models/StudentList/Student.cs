@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace StudentManagement.MVVM.Models.StudentList
 {
-    public class Student
+    public partial class Student : ObservableObject
     {
-        public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
-        public string Department { get; set; } = string.Empty;
+        [ObservableProperty]
+        private int _id;
+        [ObservableProperty]
+        private string _name;
+        [ObservableProperty]
+        private string _email;
+        [ObservableProperty]
+        private string _department;
     }
 }

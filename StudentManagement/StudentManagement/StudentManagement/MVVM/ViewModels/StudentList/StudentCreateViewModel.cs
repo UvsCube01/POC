@@ -25,7 +25,7 @@ namespace StudentManagement.MVVM.ViewModels.StudentList
         private string _department = string.Empty;
 
         /// <summary>Null in Add mode; holds the existing student in Edit mode.</summary>
-        private StudentDTO? _editingStudent;
+        private Student? _editingStudent;
 
         public bool IsEditMode => _editingStudent is not null;
         public string Title => IsEditMode ? "Edit Student" : "Add New Student";
@@ -80,18 +80,18 @@ namespace StudentManagement.MVVM.ViewModels.StudentList
 
             if (IsEditMode)
             {
-                _editingStudent!.Name       = Name.Trim();
-                _editingStudent!.Email      = Email.Trim();
-                _editingStudent!.Department = Department.Trim();
+                _editingStudent!.Name       = Name;
+                _editingStudent!.Email      = Email;
+                _editingStudent!.Department = Department;
                 _studentService.Update(_editingStudent!);
             }
             else
             {
-                _studentService.Add(new StudentDTO
+                _studentService.Add(new Student
                 {
-                    Name       = Name.Trim(),
-                    Email      = Email.Trim(),
-                    Department = Department.Trim()
+                    Name       = Name,
+                    Email      = Email,
+                    Department = Department
                 });
             }
 

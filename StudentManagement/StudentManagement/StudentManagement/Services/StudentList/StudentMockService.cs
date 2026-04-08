@@ -3,46 +3,38 @@ using StudentManagement.MVVM.Models.StudentList;
 
 namespace StudentManagement.Services.StudentList
 {
-    /// <summary>
-    /// In-memory implementation of IStudentService using ObservableCollection so
-    /// any CollectionView bound to GetAll() reacts to Add/Remove automatically.
-    /// No business logic lives here — just data management.
-    /// </summary>
     public class MockStudentService : IStudentService
     {
-        private readonly ObservableCollection<StudentDTO> _students;
+        private readonly ObservableCollection<Student> _students;
         private int _nextId;
 
         public MockStudentService()
         {
-            _students = new ObservableCollection<StudentDTO>
+            _students = new ObservableCollection<Student>
             {
-                new StudentDTO { Id = 1, Name = "Alice Johnson",  Email = "alice@example.com",   Department = "Computer Science" },
-                new StudentDTO { Id = 2, Name = "Bob Smith",      Email = "bob@example.com",     Department = "Electrical Engineering" },
-                new StudentDTO { Id = 3, Name = "Charlie Brown",  Email = "charlie@example.com", Department = "Physics" }
+                new Student { Id = 1, Name = "Alice Johnson", Email = "alice@example.com", Department = "Computer Science" },
+                new Student { Id = 2, Name = "Bob Smith", Email = "bob@example.com", Department = "Electrical Engineering" },
+                new Student { Id = 3, Name = "Charlie Brown", Email = "charlie@example.com", Department = "Physics" }
             };
             _nextId = _students.Max(s => s.Id) + 1;
         }
 
-        // ── Read ────────────────────────────────────────────────────────────────
 
-        public ObservableCollection<StudentDTO> GetAll() => _students;
+        public ObservableCollection<Student> GetAll() => _students;
 
-        public StudentDTO? GetById(int id) =>
+        public Student? GetById(int id) =>
             _students.FirstOrDefault(s => s.Id == id);
 
-        // ── Create ──────────────────────────────────────────────────────────────
 
-        public void Add(StudentDTO student)
+        public void Add(Student student)
         {
             if (student is null) throw new ArgumentNullException(nameof(student));
             student.Id = _nextId++;
             _students.Add(student);
         }
 
-        // ── Update ──────────────────────────────────────────────────────────────
 
-        public void Update(StudentDTO student)
+        public void Update(Student student)
         {
             if (student is null) throw new ArgumentNullException(nameof(student));
 
@@ -53,7 +45,6 @@ namespace StudentManagement.Services.StudentList
             _students[index] = student;
         }
 
-        // ── Delete ──────────────────────────────────────────────────────────────
 
         public void Delete(int id)
         {
@@ -62,7 +53,6 @@ namespace StudentManagement.Services.StudentList
                 _students.RemoveAt(index);
         }
 
-        // ── Helpers ─────────────────────────────────────────────────────────────
 
         private int IndexOf(int id)
         {

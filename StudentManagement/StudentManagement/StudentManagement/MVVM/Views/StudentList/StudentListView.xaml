@@ -26,7 +26,7 @@
         <!-- Table Body -->
         <CollectionView Grid.Row="1" ItemsSource="{Binding Students}">
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:StudentDTO">
+                <DataTemplate x:DataType="models:Student">
                     <Border Stroke="#E0E0E0" StrokeThickness="1" Padding="10" Margin="0,0,0,-1">
                         <Grid ColumnDefinitions="*,2*,*,Auto" RowDefinitions="Auto">
 

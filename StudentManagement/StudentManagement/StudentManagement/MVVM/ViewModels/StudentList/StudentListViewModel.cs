@@ -34,10 +34,10 @@ namespace StudentManagement.MVVM.ViewModels.StudentList
         {
             _students = _studentService.GetAll();
         }
-        public Task OnPageAppearingAsync()
-        {
-            return Task.CompletedTask;
-        }
+        //public Task OnPageAppearingAsync()
+        //{
+        //    return Task.CompletedTask;
+        //}
 
         [RelayCommand]
         private void AddStudent()

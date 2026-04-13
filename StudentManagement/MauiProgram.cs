@@ -18,6 +18,10 @@ namespace StudentManagement
                 {
                     fonts.AddFont("OpenSans-Regular.ttf",   "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf",  "OpenSansSemibold");
+                    fonts.AddFont("Poppins-Regular.ttf",     "Poppins");
+                    fonts.AddFont("SiramanRegular-q22nq.otf", "HandWritten");
+                    fonts.AddFont("Skrine.otf", "Skrine");
+                    fonts.AddFont("Font Awesome 7 Free-Solid-900.otf", "FontAwesome");
                 });
 
 #if DEBUG

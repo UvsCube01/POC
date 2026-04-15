@@ -6,10 +6,10 @@
              xmlns:vm="clr-namespace:StudentManagement.MVVM.ViewModels.StudentList"
              x:DataType="vm:StudentListViewModel"
              Title="Students">
-    <Grid ColumnDefinitions=".4*, *">
-        <Grid Grid.Column="0">
+    <Grid ColumnDefinitions="*">
+        <!--<Grid Grid.Column="0">
             <Image Source="student_management.png" Aspect="AspectFill" HorizontalOptions="Fill" VerticalOptions="Fill"/>
-        </Grid>
+        </Grid>-->
         <Grid RowDefinitions="Auto,*,Auto" Grid.Column="1" Padding="15">
 
             <!-- Table Header -->

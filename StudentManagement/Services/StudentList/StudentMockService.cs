@@ -3,7 +3,7 @@ using StudentManagement.MVVM.Models.StudentList;
 
 namespace StudentManagement.Services.StudentList
 {
-    public class MockStudentService : IStudentService
+    public class MockStudentService 
     {
         private readonly ObservableCollection<Student> _students;
         private int _nextId;

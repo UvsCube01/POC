@@ -14,7 +14,7 @@ namespace StudentManagement.MVVM.ViewModels.StudentList
         private readonly Views.StudentList.StudentCreatePopup _popup;
 
         [ObservableProperty]
-        public ObservableCollection<Student> _students;
+        public ObservableCollection<Student> _students = new ObservableCollection<Student>();
 
         public event EventHandler<Popup>? RequestShowPopup;
 
@@ -27,12 +27,21 @@ namespace StudentManagement.MVVM.ViewModels.StudentList
             _createViewModel = createViewModel;
             _popup = popup;
             //Students = _studentService.GetAll();
-            Initialize();
+           // _ = Initialize();
         }
 
-        private void Initialize()
+        public async Task Initialize()
         {
-            _students = _studentService.GetAll();
+            var list = await _studentService.GetAll();
+            if (list == null) return;
+
+            // Populate the existing ObservableCollection instead of replacing it so
+            // UI bindings to the collection instance stay valid.
+            Students.Clear();
+            foreach (var s in list)
+            {
+                Students.Add(s);
+            }
         }
         //public Task OnPageAppearingAsync()
         //{
@@ -40,18 +49,18 @@ namespace StudentManagement.MVVM.ViewModels.StudentList
         //}
 
         [RelayCommand]
-        private void AddStudent()
+        private async Task AddStudent()
         {
             _createViewModel.ResetForAdd();
-            RequestShowPopup?.Invoke(this, _popup);
+            RequestShowPopup?.Invoke(this, _popup);           
         }
 
         [RelayCommand]
-        private void EditStudent(Student student)
+        private async Task EditStudent(Student student)
         {
             if (student is null) return;
             _createViewModel.LoadForEdit(student.Id);
-            RequestShowPopup?.Invoke(this, _popup);
+            RequestShowPopup?.Invoke(this, _popup);            
         }
 
         [RelayCommand]
@@ -70,7 +79,8 @@ namespace StudentManagement.MVVM.ViewModels.StudentList
 
                 if (confirmed)
                 {
-                    _studentService.Delete(student.Id);
+                    await _studentService.Delete(student.Id.ToString());
+                    await Initialize();
                 }
             }
         }

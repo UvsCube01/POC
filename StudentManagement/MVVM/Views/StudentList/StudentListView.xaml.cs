@@ -21,7 +21,7 @@ public partial class StudentListView : ContentPage
             vm.RequestShowPopup -= Vm_RequestShowPopup;
             vm.RequestShowPopup += Vm_RequestShowPopup;
 
-            //await vm.OnPageAppearingAsync();
+            await vm.Initialize();
         }
     }
 

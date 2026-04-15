@@ -45,9 +45,9 @@ namespace StudentManagement.MVVM.ViewModels.StudentList
         // ── Public API ─────────────────────────────────────────────────────────
 
         /// <summary>Call before showing the popup to pre-fill fields for editing.</summary>
-        public void LoadForEdit(int studentId)
+        public async Task LoadForEdit(int studentId)
         {
-            _editingStudent = _studentService.GetById(studentId);
+            _editingStudent = await _studentService.GetById(studentId.ToString());
             if (_editingStudent is null) return;
 
             Name       = _editingStudent.Name;
@@ -73,7 +73,7 @@ namespace StudentManagement.MVVM.ViewModels.StudentList
         // ── Commands ───────────────────────────────────────────────────────────
 
         [RelayCommand]
-        private void Save()
+        private async Task Save()
         {
             if (string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(Email))
                 return;
@@ -83,11 +83,11 @@ namespace StudentManagement.MVVM.ViewModels.StudentList
                 _editingStudent!.Name       = Name;
                 _editingStudent!.Email      = Email;
                 _editingStudent!.Department = Department;
-                _studentService.Update(_editingStudent!);
+                await _studentService.Update(_editingStudent!);
             }
             else
             {
-                _studentService.Add(new Student
+                await _studentService.Add(new Student
                 {
                     Name       = Name,
                     Email      = Email,

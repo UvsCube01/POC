@@ -30,8 +30,8 @@ namespace StudentManagement
 
             // ── Services ──────────────────────────────────────────────────────
             // Singleton so the same in-memory collection is shared across all consumers.
-            builder.Services.AddSingleton<IStudentService, StudentSqliteService>();
-
+            // builder.Services.AddSingleton<IStudentService, StudentSqliteService>();
+            builder.Services.AddSingleton<IStudentService, StudentRestApiService>();
             // ── ViewModels ────────────────────────────────────────────────────
             builder.Services.AddTransient<StudentListViewModel>();
             // Singleton so the popup can be opened multiple times without losing state.

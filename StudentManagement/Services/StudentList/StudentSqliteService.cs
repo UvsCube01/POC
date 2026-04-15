@@ -4,7 +4,7 @@ using StudentManagement.MVVM.Models.StudentList;
 
 namespace StudentManagement.Services.StudentList
 {
-    public class StudentSqliteService : IStudentService
+    public class StudentSqliteService 
     {
         private SQLiteConnection _db;//Connection to database
         private ObservableCollection<Student> _students;//List used for UI display

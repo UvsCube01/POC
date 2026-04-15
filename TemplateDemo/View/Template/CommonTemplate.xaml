@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TemplateDemo.View.Template.CommonTemplate">
+    <Border StrokeShape="RoundRectangle 10" Stroke="#E0E0E0" StrokeThickness="2" Padding="15">
+        <VerticalStackLayout Spacing="10">
+            <!-- HeaderTitle is a custom BindableProperty we can set from the parent page -->
+            <!--<Label Text="{Binding HeaderTitle, Source={x:Reference this}}" 
+      FontSize="18" FontAttributes="Bold" TextColor="#2B3C5A" />-->
+
+            <!-- Standard UI Elements used in both Student and Employee forms -->
+            <Grid ColumnDefinitions="*, *" ColumnSpacing="15">
+                <VerticalStackLayout Grid.Column="0">
+                    <Label Text="First Name" FontAttributes="Bold" />
+                    <Entry Placeholder="Enter first name" Text="{Binding FirstName}" />
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="1">
+                    <Label Text="Last Name" FontAttributes="Bold" />
+                    <Entry Placeholder="Enter last name" Text="{Binding LastName}" />
+                </VerticalStackLayout>
+            </Grid>
+
+            <Label Text="Email Address" FontAttributes="Bold" Margin="0,5,0,0" />
+            <Entry Placeholder="Enter email address" Keyboard="Email" Text="{Binding Email}" />
+
+        </VerticalStackLayout>
+    </Border>
+</ContentView>

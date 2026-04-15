@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="TemplateDemo.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:view="clr-namespace:TemplateDemo.View"
+    Title="TemplateDemo">
+
+    <ShellContent
+        Title="Student"
+        ContentTemplate="{DataTemplate view:StudentDetailForm}"
+        Route="StudentDetailForm" />
+    <ShellContent
+        Title="Employee"
+        ContentTemplate="{DataTemplate view:EmployeeDetailForm}"
+        Route="EmployeeDetailForm" />
+
+</Shell>

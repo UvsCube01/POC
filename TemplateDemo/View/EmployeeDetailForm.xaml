@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:template="clr-namespace:TemplateDemo.View.Template"
+             x:Class="TemplateDemo.View.EmployeeDetailForm"
+             Title="Employee Details"> 
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            
+            <Label Text="Employee Detail Form" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" />
+            
+            <Label Text="Demonstrating ContentView Reusability" 
+                   FontSize="14" 
+                   TextColor="Gray"
+                   HorizontalOptions="Center" 
+                   Margin="0,0,0,10" />
+            <!-- SAVED EMPLOYEES LIST -->
+            <Label Text="Saved Employees" FontSize="18" FontAttributes="Bold" Margin="0,10,0,0" />
+            <BoxView HeightRequest="1" Color="#E0E0E0" Margin="0,0,0,5" />
+            <CollectionView ItemsSource="{Binding SavedEmployees}" HeightRequest="90">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border StrokeShape="RoundRectangle 8" Stroke="#E0E0E0" StrokeThickness="1" 
+                                Padding="15,10" BackgroundColor="#FAFAFA" WidthRequest="200">
+                            <StackLayout>
+                                <HorizontalStackLayout Spacing="5">
+                                    <Label Text="{Binding FirstName}" TextColor="Black"  FontAttributes="Bold" />
+                                    <Label Text="{Binding LastName}" TextColor="Black"  FontAttributes="Bold" />
+                                </HorizontalStackLayout>
+                                <Label Text="{Binding Designation}" TextColor="Black" FontSize="12" />
+                            </StackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+            <template:CommonTemplate/>
+
+            <!-- EMPLOYEE SPECIFIC DETAILS -->
+            <Border StrokeShape="RoundRectangle 10" Stroke="#E0E0E0" StrokeThickness="2" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Employee Background" FontSize="18" FontAttributes="Bold" TextColor="#2E7D32"/>
+                    <BoxView HeightRequest="1" Color="#E0E0E0" Margin="0,0,0,10" />
+                    <Grid ColumnDefinitions="*, *" ColumnSpacing="15">
+                        <VerticalStackLayout Grid.Column="0">
+                            <Label Text="Department" FontAttributes="Bold" />
+                            <Entry Placeholder="e.g. IT" Text="{Binding Department}" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="Job Title / Designation" FontAttributes="Bold" />
+                            <Entry Placeholder="e.g. Software Engineer" Text="{Binding Designation}"  />
+                        </VerticalStackLayout>
+                    </Grid>                   
+                </VerticalStackLayout>
+            </Border>
+            
+            <Button Text="Save Employee" 
+                    Margin="0, 20, 0, 0" 
+                    CornerRadius="8" 
+                    BackgroundColor="#E65100" 
+                    TextColor="White"
+                    Command="{Binding SaveEmployeeCommand}" />  
+            
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

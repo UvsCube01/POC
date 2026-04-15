@@ -26,7 +26,7 @@ namespace StudentManagement
 
             // ── Services ──────────────────────────────────────────────────────
             // Singleton so the same in-memory collection is shared across all consumers.
-            builder.Services.AddSingleton<IStudentService, MockStudentService>();
+            builder.Services.AddSingleton<IStudentService, StudentSqliteService>();
 
             // ── ViewModels ────────────────────────────────────────────────────
             builder.Services.AddTransient<StudentListViewModel>();
